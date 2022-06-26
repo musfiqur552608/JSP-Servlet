@@ -8,6 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class AddServlet extends HttpServlet{
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -30,6 +31,10 @@ public class AddServlet extends HttpServlet{
 		
 //		RequestDispatcher rd = req.getRequestDispatcher("sq");
 //		rd.forward(req, res);
+		
+		HttpSession session = req.getSession();
+		session.setAttribute("k", k);
+		
 		
 		res.sendRedirect("sq?k="+k);
 	}
